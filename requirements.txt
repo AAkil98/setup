@@ -1,0 +1,76 @@
+# requirements.txt — data-science stack for the `forge-ml` virtualenv.
+#
+# Installed by scripts/04-python-packages.sh into the pyenv `forge-ml` env.
+# Or manually:  pyenv activate forge-ml && pip install -r requirements.txt
+#
+# Versions are pinned to match your previous machine for reproducibility.
+# If a wheel is unavailable on a newer Python/macOS, relax or remove the pin.
+
+# --- Core data / numerical ---
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.13.1
+polars==1.35.2
+pyarrow==19.0.1
+statsmodels==0.14.4
+
+# --- Visualization ---
+matplotlib==3.10.0
+seaborn==0.13.2
+plotly==6.0.0
+graphviz==0.20.3
+
+# --- Machine learning ---
+scikit-learn==1.6.1
+xgboost==2.1.4
+lightgbm==4.6.0
+imbalanced-learn==0.13.0
+
+# --- Deep learning ---
+tensorflow==2.16.2
+keras==3.11.3
+torch==2.9.1
+
+# --- NLP / LLMs ---
+nltk==3.9.1
+transformers==4.49.0
+huggingface-hub==0.29.1
+openai==1.109.1
+anthropic==0.78.0
+
+# --- Notebooks / interactive ---
+jupyterlab==4.3.5
+notebook==7.3.2
+ipython==8.32.0
+ipykernel==6.29.5
+ipywidgets==8.1.5
+ipdb==0.13.13
+
+# --- Web / APIs ---
+fastapi==0.122.0
+uvicorn==0.38.0
+streamlit==1.51.0
+requests==2.32.3
+beautifulsoup4==4.13.3
+
+# --- Databases ---
+SQLAlchemy==2.0.44
+psycopg2-binary==2.9.11
+
+# --- Files / utils ---
+openpyxl==3.1.5
+python-dotenv==1.2.1
+colorama==0.4.6
+termcolor==2.5.0
+tqdm==4.67.1
+
+# --- MLOps ---
+mlflow==3.6.0
+
+# --- Dev tools / linting / testing ---
+ruff==0.15.0
+black==25.1.0
+isort==6.0.0
+flake8==7.3.0
+pylint==3.3.4
+pytest==8.4.2

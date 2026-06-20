@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Editor noise
+*.swp
+*.swo
+
+# Backups created by the install scripts
+backups/
+*.backup

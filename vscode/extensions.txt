@@ -1,0 +1,48 @@
+# VS Code extensions — one id per line. Lines starting with # are ignored.
+# Installed by scripts/05-vscode.sh via `code --install-extension`.
+# (The WSL-only `ms-vscode-remote.remote-wsl` extension was dropped — useless on macOS.)
+
+# --- Python / data science ---
+ms-python.python
+ms-python.vscode-pylance
+ms-python.vscode-python-envs
+ms-python.debugpy
+ms-python.isort
+ms-python.pylint
+charliermarsh.ruff
+mikoz.black-py
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+mechatroner.rainbow-csv
+dvirtz.parquet-viewer
+
+# --- Git / GitHub ---
+eamodio.gitlens
+github.vscode-github-actions
+
+# --- Containers ---
+ms-azuretools.vscode-containers
+
+# --- AI assistants ---
+anthropic.claude-code
+google.gemini-cli-vscode-ide-companion
+
+# --- Markdown / writing / LaTeX ---
+6o8.colorized-markdown-preview-theme
+bierner.markdown-mermaid
+sankarmantripragada.markdown-mermaid-viewer
+shd101wyy.markdown-preview-enhanced
+goessner.mdmath
+gdrtf.md2reader
+stefanodevuono.markdown-math-intellisense
+chrischinchilla.vscode-pandoc
+james-yu.latex-workshop
+liaml17.thesauraptor
+brunnerh.insert-unicode
+
+# --- Web / config / misc ---
+astro-build.astro-vscode
+tamasfe.even-better-toml
+ms-vscode.makefile-tools
+draivin.hscopes

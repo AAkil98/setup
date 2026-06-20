@@ -1,0 +1,33 @@
+{
+  // Editor
+  "editor.formatOnSave": true,
+  "editor.rulers": [80, 100],
+  "editor.bracketPairColorization.enabled": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "telemetry.telemetryLevel": "off",
+  "workbench.editor.enablePreview": false,
+
+  // Python — Ruff handles formatting + import sorting
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "python.defaultInterpreterPath": "~/.pyenv/shims/python",
+  "ruff.lineLength": 100,
+
+  // Jupyter notebooks
+  "notebook.formatOnSave.enabled": true,
+  "jupyter.askForKernelRestart": false,
+
+  // Markdown — keep trailing spaces (hard line breaks)
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+
+  // Git
+  "git.autofetch": true,
+  "git.confirmSync": false
+}

@@ -1,0 +1,30 @@
+# Global gitignore — applies to every repo (referenced by ~/.gitconfig).
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Editors / IDEs
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.direnv/
+
+# Node
+node_modules/
+
+# Logs / temp
+*.log
+.cache/
