@@ -29,5 +29,6 @@ link_file "$REPO_ROOT/dotfiles/.zshrc"            "$HOME/.zshrc"
 link_file "$REPO_ROOT/dotfiles/.aliases"          "$HOME/.aliases"
 link_file "$REPO_ROOT/dotfiles/.gitconfig"        "$HOME/.gitconfig"
 link_file "$REPO_ROOT/dotfiles/.gitignore_global" "$HOME/.gitignore_global"
+link_file "$REPO_ROOT/dotfiles/.editorconfig"     "$HOME/.editorconfig"
 
 ok "Shell ready. Open a new terminal (or run 'exec zsh') to load it."

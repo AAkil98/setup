@@ -31,6 +31,19 @@ defaults write com.apple.dock mru-spaces -bool false
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
+# Touch ID for sudo — uses the update-safe /etc/pam.d/sudo_local (macOS Sonoma+).
+if [ -e /etc/pam.d/sudo_local.template ]; then
+  if ! sudo grep -qs '^auth.*pam_tid.so' /etc/pam.d/sudo_local 2>/dev/null; then
+    log "Enabling Touch ID for sudo (needs your password once)..."
+    printf 'auth       sufficient     pam_tid.so\n' | sudo tee -a /etc/pam.d/sudo_local >/dev/null \
+      && ok "Touch ID for sudo enabled" || warn "couldn't enable Touch ID for sudo"
+  else
+    ok "Touch ID for sudo already enabled"
+  fi
+else
+  warn "No sudo_local.template (older macOS) — skipping Touch ID for sudo."
+fi
+
 ok "Preferences written — restarting Finder, Dock, SystemUIServer..."
 killall Finder Dock SystemUIServer 2>/dev/null || true
 warn "A few changes only take full effect after a logout/restart."

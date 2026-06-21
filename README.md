@@ -13,6 +13,7 @@ down to **just macOS** and automated end-to-end.
 |------|--------------|
 | **Homebrew** | git, gh, **uv**, pipx, pre-commit, dvc, kubectl, protobuf, yq, tmux, ripgrep… + VS Code, Docker, Chrome, **Ollama** (`Brewfile`) |
 | **Shell** | zsh + oh-my-zsh (`robbyrussell` theme, Le Wagon plugins) and my dotfiles |
+| **Workflow** | SSH config (macOS keychain), global `.editorconfig`, gh aliases + **gh-dash** PR dashboard, Touch ID for `sudo` |
 | **Python (data)** | pyenv → Python 3.12.9 → a `forge-ml` virtualenv with the data-science stack (`requirements.txt`) |
 | **Python (LLMOps/MLOps)** | same env, plus langchain/langgraph, langfuse, mcp/fastmcp, qdrant, mlflow, prefect, optuna, evidently, opentelemetry… (`requirements-llmops.txt`) + `poetry`/`commitizen` via pipx |
 | **Node** | nvm → Node 24.11.1 (default) |
@@ -58,12 +59,12 @@ Each step is a standalone script in `scripts/` and is safe to re-run
 | # | Script | Does |
 |---|--------|------|
 | 1 | `01-homebrew.sh` | Command Line Tools, Homebrew, everything in the `Brewfile` |
-| 2 | `02-shell.sh` | oh-my-zsh + `zsh-syntax-highlighting`, symlinks dotfiles |
-| 3 | `03-github.sh` | generates an SSH key and logs in with `gh` *(interactive)* |
+| 2 | `02-shell.sh` | oh-my-zsh + `zsh-syntax-highlighting`, symlinks dotfiles (incl. `.editorconfig`) |
+| 3 | `03-github.sh` | SSH key + `~/.ssh/config`, `gh` login, gh aliases + gh-dash *(interactive)* |
 | 4 | `04-languages.sh` | pyenv + Python 3.12.9 + `forge-ml` venv, nvm + Node 24.11.1 |
 | 5 | `05-python-packages.sh` | installs `requirements.txt` + `requirements-llmops.txt` into `forge-ml`, plus `poetry`/`commitizen` via pipx |
 | 6 | `06-vscode.sh` | installs extensions, drops in `settings.json` |
-| 7 | `07-macos.sh` | applies macOS `defaults` tweaks |
+| 7 | `07-macos.sh` | applies macOS `defaults` tweaks + Touch ID for `sudo` |
 | 8 | `08-claude-code.sh` | installs Claude Code, applies settings, installs plugins, adds MCP servers |
 
 ## Secrets (MCP tokens)
@@ -87,7 +88,8 @@ Everything is plain text — edit, commit, and your next machine inherits it:
 - **LLMOps / MLOps packages** → `requirements-llmops.txt`
 - **VS Code extensions** → `vscode/extensions.txt`
 - **Claude Code settings** → `claude/settings.json`
-- **Shell / git config** → `dotfiles/`
+- **Shell / git / SSH / editor config** → `dotfiles/`
+- **gh-dash dashboard** → `dotfiles/gh-dash/config.yml`
 - **macOS tweaks** → `scripts/07-macos.sh`
 
 ## Keeping it current (on the old machine)

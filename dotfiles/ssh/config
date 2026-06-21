@@ -1,0 +1,16 @@
+# ~/.ssh/config — managed by github.com/AAkil98/setup
+# NOTE: UseKeychain is macOS-only (this repo targets macOS).
+
+Host *
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_ed25519
+    ServerAliveInterval 60
+    ServerAliveCountMax 30
+    IdentitiesOnly yes
+
+Host github.com
+    HostName github.com
+    User git
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_ed25519
