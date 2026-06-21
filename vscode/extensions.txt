@@ -46,3 +46,8 @@ astro-build.astro-vscode
 tamasfe.even-better-toml
 ms-vscode.makefile-tools
 draivin.hscopes
+
+# --- Themes / UI ---
+catppuccin.catppuccin-vsc
+catppuccin.catppuccin-vsc-icons
+usernamehw.errorlens

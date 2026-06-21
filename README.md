@@ -4,9 +4,6 @@ My personal setup for a fresh MacBook. Clone it on day one, run one command, and
 get back a familiar data-science / **LLMOps + MLOps** environment — shell,
 languages, editor, tooling, Claude Code, the lot.
 
-Inspired by [lewagon/data-setup](https://github.com/lewagon/data-setup), trimmed
-down to **just macOS** and automated end-to-end.
-
 ## What it installs
 
 | Area | What you get |
@@ -17,7 +14,7 @@ down to **just macOS** and automated end-to-end.
 | **Python (data)** | pyenv → Python 3.12.9 → a `forge-ml` virtualenv with the data-science stack (`requirements.txt`) |
 | **Python (LLMOps/MLOps)** | same env, plus langchain/langgraph, langfuse, mcp/fastmcp, qdrant, mlflow, prefect, optuna, evidently, opentelemetry… (`requirements-llmops.txt`) + `poetry`/`commitizen` via pipx |
 | **Node** | nvm → Node 24.11.1 (default) |
-| **VS Code** | my extensions + a baseline `settings.json` |
+| **VS Code** | my extensions + `settings.json` themed **Catppuccin Mocha** (JetBrains Mono ligatures, Catppuccin icons, ErrorLens) |
 | **Claude Code** | the CLI, my `settings.json` (opus / low effort / `dark-daltonized`), 8 plugins (`rust-analyzer-lsp`, `pyright-lsp`, `mcp-server-dev`, `langfuse-observability`, `qdrant-skills`, `huggingface-skills`, `pydantic-ai`, `vercel`), and MCP servers |
 | **macOS** | sensible system tweaks (fast key repeat, show extensions, screenshots → ~/Screenshots…) |
 
