@@ -17,6 +17,7 @@ brew "vim"                # terminal editor
 brew "wget"               # downloader
 brew "jq"                 # command-line JSON processor
 brew "tree"               # pretty directory trees
+brew "starship"           # fast, customizable shell prompt
 
 # pyenv build dependencies (needed to compile Python cleanly)
 brew "openssl@3"
@@ -29,6 +30,7 @@ brew "zlib"
 cask "visual-studio-code" # your editor
 cask "docker-desktop"     # Docker (Desktop app + `docker` CLI)
 cask "google-chrome"      # browser
+cask "font-jetbrains-mono-nerd-font"  # Nerd Font for starship/tmux glyphs
 
 # ---- LLMOps / MLOps / DevOps (for mlops-projects & mada) ---------------------
 brew "uv"                 # fast Python package/project manager (forge-ml uses it)

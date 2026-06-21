@@ -31,4 +31,19 @@ link_file "$REPO_ROOT/dotfiles/.gitconfig"        "$HOME/.gitconfig"
 link_file "$REPO_ROOT/dotfiles/.gitignore_global" "$HOME/.gitignore_global"
 link_file "$REPO_ROOT/dotfiles/.editorconfig"     "$HOME/.editorconfig"
 
+# starship prompt config.
+mkdir -p "$HOME/.config"
+link_file "$REPO_ROOT/dotfiles/starship.toml" "$HOME/.config/starship.toml"
+
+# tmux config + plugin manager (tpm).
+link_file "$REPO_ROOT/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then
+  ok "tpm already installed"
+else
+  log "Installing tmux plugin manager (tpm)..."
+  git clone --depth=1 https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+fi
+"$HOME/.tmux/plugins/tpm/bin/install_plugins" >/dev/null 2>&1 \
+  || warn "tmux plugins will install on first launch (open tmux, press prefix + I)."
+
 ok "Shell ready. Open a new terminal (or run 'exec zsh') to load it."

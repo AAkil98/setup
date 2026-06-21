@@ -12,8 +12,8 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Theme — https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# Prompt is handled by starship (loaded at the bottom) — disable oh-my-zsh's theme.
+ZSH_THEME=""
 
 # oh-my-zsh plugins (Le Wagon set).
 plugins=(git gitfast last-working-dir common-aliases zsh-syntax-highlighting history-substring-search ssh-agent)
@@ -39,7 +39,6 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if type -a pyenv > /dev/null 2>&1; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init - 2> /dev/null)"
-  RPROMPT+='[🐍 $(pyenv version-name)]'
 fi
 
 # nvm (Node).
@@ -100,3 +99,6 @@ export PATH="$HOME/.local/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
+# Starship prompt — must load after oh-my-zsh so it owns the prompt.
+type -a starship > /dev/null 2>&1 && eval "$(starship init zsh)"

@@ -29,5 +29,8 @@
 
   // Git
   "git.autofetch": true,
-  "git.confirmSync": false
+  "git.confirmSync": false,
+
+  // Terminal — Nerd Font so starship/tmux glyphs render
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font, monospace"
 }

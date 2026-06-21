@@ -12,7 +12,7 @@ down to **just macOS** and automated end-to-end.
 | Area | What you get |
 |------|--------------|
 | **Homebrew** | git, gh, **uv**, pipx, pre-commit, dvc, kubectl, protobuf, yq, tmux, ripgrep… + VS Code, Docker, Chrome, **Ollama** (`Brewfile`) |
-| **Shell** | zsh + oh-my-zsh (`robbyrussell` theme, Le Wagon plugins) and my dotfiles |
+| **Shell** | zsh + oh-my-zsh (Le Wagon plugins) with a **starship** prompt (Catppuccin Mocha) + JetBrainsMono Nerd Font, tmux config, and my dotfiles |
 | **Workflow** | SSH config (macOS keychain), global `.editorconfig`, gh aliases + **gh-dash** PR dashboard, Touch ID for `sudo` |
 | **Python (data)** | pyenv → Python 3.12.9 → a `forge-ml` virtualenv with the data-science stack (`requirements.txt`) |
 | **Python (LLMOps/MLOps)** | same env, plus langchain/langgraph, langfuse, mcp/fastmcp, qdrant, mlflow, prefect, optuna, evidently, opentelemetry… (`requirements-llmops.txt`) + `poetry`/`commitizen` via pipx |
@@ -59,7 +59,7 @@ Each step is a standalone script in `scripts/` and is safe to re-run
 | # | Script | Does |
 |---|--------|------|
 | 1 | `01-homebrew.sh` | Command Line Tools, Homebrew, everything in the `Brewfile` |
-| 2 | `02-shell.sh` | oh-my-zsh + `zsh-syntax-highlighting`, symlinks dotfiles (incl. `.editorconfig`) |
+| 2 | `02-shell.sh` | oh-my-zsh + `zsh-syntax-highlighting` + starship + tmux/tpm, symlinks dotfiles |
 | 3 | `03-github.sh` | SSH key + `~/.ssh/config`, `gh` login, gh aliases + gh-dash *(interactive)* |
 | 4 | `04-languages.sh` | pyenv + Python 3.12.9 + `forge-ml` venv, nvm + Node 24.11.1 |
 | 5 | `05-python-packages.sh` | installs `requirements.txt` + `requirements-llmops.txt` into `forge-ml`, plus `poetry`/`commitizen` via pipx |
@@ -89,6 +89,7 @@ Everything is plain text — edit, commit, and your next machine inherits it:
 - **VS Code extensions** → `vscode/extensions.txt`
 - **Claude Code settings** → `claude/settings.json`
 - **Shell / git / SSH / editor config** → `dotfiles/`
+- **Prompt & tmux** → `dotfiles/starship.toml`, `dotfiles/.tmux.conf`
 - **gh-dash dashboard** → `dotfiles/gh-dash/config.yml`
 - **macOS tweaks** → `scripts/07-macos.sh`
 
