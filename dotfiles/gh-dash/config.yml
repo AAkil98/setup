@@ -1,13 +1,13 @@
 # ~/.config/gh-dash/config.yml — PR/issue dashboard (run: gh dash)
-# Sections tuned for your two orgs (AAkil98 personal + Madahub-dev).
+# Sections for your AAkil98 account.
 
 prSections:
   - title: My PRs
     filters: is:open author:@me
   - title: Needs my review
     filters: is:open review-requested:@me
-  - title: Madahub-dev
-    filters: is:open org:Madahub-dev -author:@me
+  - title: Recently active
+    filters: involves:@me sort:updated
 
 issuesSections:
   - title: My issues
