@@ -8,3 +8,6 @@
 # Backups created by the install scripts
 backups/
 *.backup
+
+# Local secrets (MCP tokens, etc.) — NEVER commit
+.secrets.local

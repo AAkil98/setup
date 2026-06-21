@@ -17,6 +17,7 @@ STEPS=(
   "05-python-packages.sh:Data-science Python packages"
   "06-vscode.sh:VS Code extensions & settings"
   "07-macos.sh:macOS system preferences"
+  "08-claude-code.sh:Claude Code CLI, settings, plugins & MCP"
 )
 
 usage() {
@@ -38,7 +39,7 @@ esac
 if [ "$#" -gt 0 ]; then
   selected=("$@")
 else
-  selected=(1 2 3 4 5 6 7)
+  selected=(1 2 3 4 5 6 7 8)
 fi
 
 echo

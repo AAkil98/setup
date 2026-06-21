@@ -1,0 +1,71 @@
+# requirements-llmops.txt — LLMOps + MLOps additions for the `forge-ml` env.
+#
+# Installed into forge-ml alongside requirements.txt by scripts/05.
+# Mirrors the tooling across your mlops-projects/ and mada/ repos.
+#
+# NOTE: forge-ml is your shared "kitchen-sink" env for quick experiments and
+# notebooks. Real project work happens in per-project `uv`/`poetry` envs (which
+# pin their own versions), so these are deliberately light on pins to track
+# current releases. Pin anything you depend on heavily.
+
+# --- LLM SDKs & frameworks ---
+# (openai, anthropic, transformers, huggingface-hub are in requirements.txt)
+langchain
+langchain-community
+langgraph
+llama-index
+litellm
+
+# --- LLM observability / tracing ---
+langfuse
+
+# --- MCP — you build MCP servers (MCP-Hive, HivePitch *_mcp) ---
+mcp
+fastmcp
+
+# --- Vector / embeddings / retrieval ---
+qdrant-client
+fastembed
+sentence-transformers
+tiktoken
+
+# --- Local LLM clients ---
+ollama
+# llama-cpp-python   # native build (needs cmake); uncomment for in-process GGUF
+# vllm               # heavy / GPU-oriented — install per-project instead
+
+# --- MLOps: orchestration, tuning, monitoring, explainability ---
+# (mlflow is in requirements.txt; dvc is installed via Homebrew)
+prefect
+optuna
+evidently
+shap
+
+# --- Observability ---
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-instrumentation
+prometheus-client
+structlog
+
+# --- Backend / services ---
+pydantic
+pydantic-settings
+httpx
+uvicorn[standard]
+gunicorn
+alembic
+redis
+neo4j
+typer
+rich
+
+# --- Dev / testing ---
+mypy
+pytest-asyncio
+pytest-cov
+pytest-xdist
+
+# --- Docs ---
+mkdocs
+mkdocs-material

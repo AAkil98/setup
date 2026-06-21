@@ -17,6 +17,20 @@ fi
 
 log "Upgrading pip..."
 "$PIP" install --upgrade pip
-log "Installing from requirements.txt (a few minutes)..."
+
+log "Installing base data-science stack (requirements.txt)..."
 "$PIP" install -r "$REPO_ROOT/requirements.txt"
-ok "Data-science packages installed into '$VENV_NAME'"
+
+log "Installing LLMOps/MLOps stack (requirements-llmops.txt)..."
+"$PIP" install -r "$REPO_ROOT/requirements-llmops.txt"
+ok "Python packages installed into '$VENV_NAME'"
+
+# Cross-project Python CLIs, isolated via pipx (so they don't pollute forge-ml).
+if have pipx; then
+  log "Installing global Python CLIs via pipx (poetry, commitizen)..."
+  pipx install poetry     >/dev/null 2>&1 || pipx upgrade poetry     || true
+  pipx install commitizen >/dev/null 2>&1 || pipx upgrade commitizen || true
+  ok "pipx tools ready (poetry, commitizen)"
+else
+  warn "pipx not found — skipping poetry/commitizen (it's in the Brewfile)."
+fi

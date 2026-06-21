@@ -1,7 +1,8 @@
 # 💻 macOS Setup
 
 My personal setup for a fresh MacBook. Clone it on day one, run one command, and
-get back a familiar data-science environment — shell, languages, editor, the lot.
+get back a familiar data-science / **LLMOps + MLOps** environment — shell,
+languages, editor, tooling, Claude Code, the lot.
 
 Inspired by [lewagon/data-setup](https://github.com/lewagon/data-setup), trimmed
 down to **just macOS** and automated end-to-end.
@@ -10,11 +11,13 @@ down to **just macOS** and automated end-to-end.
 
 | Area | What you get |
 |------|--------------|
-| **Homebrew** | git, gh, pyenv, direnv, tmux, ripgrep, vim, jq… + VS Code, Docker, Chrome (`Brewfile`) |
+| **Homebrew** | git, gh, **uv**, pipx, pre-commit, dvc, kubectl, protobuf, yq, tmux, ripgrep… + VS Code, Docker, Chrome, **Ollama** (`Brewfile`) |
 | **Shell** | zsh + oh-my-zsh (`robbyrussell` theme, Le Wagon plugins) and my dotfiles |
-| **Python** | pyenv → Python 3.12.9 → a `forge-ml` virtualenv with the full data-science stack |
+| **Python (data)** | pyenv → Python 3.12.9 → a `forge-ml` virtualenv with the data-science stack (`requirements.txt`) |
+| **Python (LLMOps/MLOps)** | same env, plus langchain/langgraph, langfuse, mcp/fastmcp, qdrant, mlflow, prefect, optuna, evidently, opentelemetry… (`requirements-llmops.txt`) + `poetry`/`commitizen` via pipx |
 | **Node** | nvm → Node 24.11.1 (default) |
 | **VS Code** | my extensions + a baseline `settings.json` |
+| **Claude Code** | the CLI, my `settings.json` (opus / low effort / `dark-daltonized`), the `rust-analyzer-lsp` + `vercel` plugins, and MCP servers |
 | **macOS** | sensible system tweaks (fast key repeat, show extensions, screenshots → ~/Screenshots…) |
 
 ## Quick start (on the new Mac)
@@ -58,17 +61,32 @@ Each step is a standalone script in `scripts/` and is safe to re-run
 | 2 | `02-shell.sh` | oh-my-zsh + `zsh-syntax-highlighting`, symlinks dotfiles |
 | 3 | `03-github.sh` | generates an SSH key and logs in with `gh` *(interactive)* |
 | 4 | `04-languages.sh` | pyenv + Python 3.12.9 + `forge-ml` venv, nvm + Node 24.11.1 |
-| 5 | `05-python-packages.sh` | `pip install -r requirements.txt` into `forge-ml` |
+| 5 | `05-python-packages.sh` | installs `requirements.txt` + `requirements-llmops.txt` into `forge-ml`, plus `poetry`/`commitizen` via pipx |
 | 6 | `06-vscode.sh` | installs extensions, drops in `settings.json` |
 | 7 | `07-macos.sh` | applies macOS `defaults` tweaks |
+| 8 | `08-claude-code.sh` | installs Claude Code, applies settings, installs plugins, adds MCP servers |
+
+## Secrets (MCP tokens)
+
+Tokens never live in this repo. Step 8 reads them from `.secrets.local`, which is
+gitignored:
+
+```bash
+cp .secrets.local.example .secrets.local   # then paste your token(s)
+```
+
+Set `SANITY_MCP_TOKEN` there and step 8 wires up the Sanity MCP server for you;
+leave it blank to skip.
 
 ## Customizing
 
 Everything is plain text — edit, commit, and your next machine inherits it:
 
 - **Apps / CLI tools** → `Brewfile`
-- **Python packages** → `requirements.txt`
+- **Data-science packages** → `requirements.txt`
+- **LLMOps / MLOps packages** → `requirements-llmops.txt`
 - **VS Code extensions** → `vscode/extensions.txt`
+- **Claude Code settings** → `claude/settings.json`
 - **Shell / git config** → `dotfiles/`
 - **macOS tweaks** → `scripts/07-macos.sh`
 

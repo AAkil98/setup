@@ -1,0 +1,9 @@
+{
+  "model": "opus",
+  "effortLevel": "low",
+  "theme": "dark-daltonized",
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true
+  }
+}
