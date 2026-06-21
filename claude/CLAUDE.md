@@ -27,3 +27,10 @@ project-specific detail and overrides this file on any conflict.
 - All code lives **flat under `~/code/<repo>`** (named as on GitHub) — use the
   `clone` helper. Nothing dev-related in Desktop, Documents, or Downloads.
 - **Never commit secrets** — tokens go in gitignored files (e.g. `.secrets.local`).
+
+## Knowledge capture
+- `~/code/knowledge-base` is my development knowledge repo (private on GitHub).
+- **Auto-capture reusable discoveries:** When we find performance patterns, create
+  templates, or solve tricky problems — save them there immediately.
+- Use `/save-knowledge` for quick captures, or edit directly and commit.
+- See `~/code/knowledge-base/CLAUDE.md` for format and guidelines.
