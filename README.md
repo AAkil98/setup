@@ -77,6 +77,27 @@ cp .secrets.local.example .secrets.local   # then paste your token(s)
 Set `SANITY_MCP_TOKEN` there and step 8 wires up the Sanity MCP server for you;
 leave it blank to skip.
 
+## Directory layout
+
+All code lives under one root — nothing dev-related in `Desktop`, `Documents`, or
+`Downloads`. Repos sit **flat** under `~/code`, named exactly as on GitHub:
+
+```
+~/code/
+├── forge-ml/
+├── tessera/
+├── setup/        ← this repo
+└── …
+```
+
+The `clone` helper (from `dotfiles/.aliases`) keeps it tidy automatically:
+
+```bash
+clone AAkil98/forge-ml   # → clones into ~/code/forge-ml and cds in
+```
+
+`z forge-ml` jumps back there anytime (zoxide).
+
 ## Customizing
 
 Everything is plain text — edit, commit, and your next machine inherits it:

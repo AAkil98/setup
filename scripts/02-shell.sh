@@ -31,6 +31,9 @@ link_file "$REPO_ROOT/dotfiles/.gitconfig"        "$HOME/.gitconfig"
 link_file "$REPO_ROOT/dotfiles/.gitignore_global" "$HOME/.gitignore_global"
 link_file "$REPO_ROOT/dotfiles/.editorconfig"     "$HOME/.editorconfig"
 
+# Code directory — flat convention: every repo lives directly under ~/code.
+mkdir -p "$HOME/code"
+
 # starship prompt config.
 mkdir -p "$HOME/.config"
 link_file "$REPO_ROOT/dotfiles/starship.toml" "$HOME/.config/starship.toml"
