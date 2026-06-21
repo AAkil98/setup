@@ -20,6 +20,8 @@ plugins=(git gitfast last-working-dir common-aliases zsh-syntax-highlighting his
 
 # Don't report Homebrew analytics.
 export HOMEBREW_NO_ANALYTICS=1
+# Retry dropped downloads (resilience on flaky networks).
+export HOMEBREW_CURL_RETRIES=5
 
 # Disable warning about insecure completion-dependent directories.
 ZSH_DISABLE_COMPFIX=true

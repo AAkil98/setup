@@ -11,3 +11,6 @@ backups/
 
 # Local secrets (MCP tokens, etc.) — NEVER commit
 .secrets.local
+
+# Homebrew bundle lockfile (if generated)
+Brewfile.lock.json

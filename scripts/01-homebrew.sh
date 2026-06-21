@@ -29,7 +29,34 @@ elif [ -x /usr/local/bin/brew ]; then        # Intel
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-# 3. Install/upgrade everything declared in the Brewfile.
+# 3. Install everything in the Brewfile — resilient to flaky networks that drop
+#    large cask downloads. brew bundle is idempotent, so each retry only
+#    re-fetches whatever is still missing.
+export HOMEBREW_CURL_RETRIES=5        # retry each download up to 5x
+export HOMEBREW_NO_AUTO_UPDATE=1      # don't re-update on every retry
+export HOMEBREW_NO_INSTALL_CLEANUP=1  # fewer ops between attempts
+
 log "Installing apps & tools from the Brewfile (grab a coffee)..."
-brew bundle --file="$REPO_ROOT/Brewfile"
-ok "Homebrew packages installed"
+for i in 1 2 3 4; do
+  brew bundle --file="$REPO_ROOT/Brewfile" && break
+  warn "brew bundle hit failures (usually dropped downloads) — retry in 15s [$i/4]..."
+  sleep 15
+done
+
+# Retry any casks that still didn't land, one at a time — the big GUI downloads
+# are what flaky networks drop. Cask names are read straight from the Brewfile.
+grep -E '^[[:space:]]*cask ' "$REPO_ROOT/Brewfile" \
+  | sed -E 's/^[[:space:]]*cask "([^"]+)".*/\1/' | while read -r c; do
+    brew list --cask "$c" >/dev/null 2>&1 && continue
+    warn "cask '$c' still missing — retrying it on its own..."
+    brew install --cask "$c" || warn "  '$c' failed again — grab it later on a stabler network"
+  done || true
+
+# Don't abort the whole setup over one stubborn GUI app — report and move on.
+if brew bundle check --file="$REPO_ROOT/Brewfile" >/dev/null 2>&1; then
+  ok "All Homebrew packages installed"
+else
+  warn "Some packages are still missing."
+  warn "Re-run './install.sh 1' on a better connection, or list what's left with:"
+  warn "  brew bundle check --file=\"$REPO_ROOT/Brewfile\" --verbose"
+fi
