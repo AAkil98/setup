@@ -28,6 +28,12 @@ fi
 cp "$REPO_ROOT/claude/settings.json" "$HOME/.claude/settings.json"
 ok "Claude settings applied"
 
+# 2b. Global CLAUDE.md + skills/agents scaffold — symlinked from the repo.
+link_file "$REPO_ROOT/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+link_file "$REPO_ROOT/claude/skills"    "$HOME/.claude/skills"
+link_file "$REPO_ROOT/claude/agents"    "$HOME/.claude/agents"
+ok "Global CLAUDE.md + skills/agents linked"
+
 # 3. Plugins — needs you to have logged in to Claude at least once.
 log "Registering the official marketplace + your plugins..."
 claude plugin marketplace add anthropics/claude-plugins-official >/dev/null 2>&1 \
