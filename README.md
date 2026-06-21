@@ -33,26 +33,27 @@ languages, editor, tooling, Claude Code, the lot.
    cd ~/code/setup
    ```
 
-3. **Run it:**
+3. **Run the steps one at a time** — do each, confirm it worked, then move on.
+   No bulk run; you stay in control between each:
    ```bash
-   ./install.sh
+   ./install.sh 1     # Command Line Tools, Homebrew & Brewfile apps
+   ./install.sh 2     # shell, dotfiles, starship prompt, Ghostty, modern CLI
+   ./install.sh 3     # SSH key + GitHub login + gh-dash        (interactive)
+   ./install.sh 4     # Python (pyenv → forge-ml) + Node (nvm)
+   ./install.sh 5     # Python packages into forge-ml           (slow)
+   ./install.sh 6     # VS Code extensions + settings
+   ./install.sh 7     # macOS defaults + Touch ID for sudo
+   ./install.sh 8     # Claude Code: CLI, settings, global CLAUDE.md, plugins, MCP
    ```
-   It lists the steps, asks for confirmation, then runs them in order.
-   When it finishes, restart your terminal (`exec zsh`).
+   Each step is standalone, prompts before it runs, and is safe to re-run
+   (replaced files are backed up to `~/.setup-backups/…`). When all eight are
+   done, restart your terminal (`exec zsh`).
 
-That's it. ☕ The full run takes ~20–40 min (compiling Python and installing
-packages are the slow parts).
+> Run them in order — 1 sets up the others. `./install.sh --list` shows the
+> steps anytime. (A bare `./install.sh` would run all eight back-to-back; skip
+> it unless you're rebuilding and deliberately want no pause between steps.)
 
-## Running individual steps
-
-Each step is a standalone script in `scripts/` and is safe to re-run
-(idempotent — existing files are backed up to `~/.setup-backups/…`).
-
-```bash
-./install.sh 6        # just VS Code
-./install.sh 4 5      # languages, then Python packages
-./install.sh --list   # show all steps
-```
+## The steps
 
 | # | Script | Does |
 |---|--------|------|
@@ -63,7 +64,7 @@ Each step is a standalone script in `scripts/` and is safe to re-run
 | 5 | `05-python-packages.sh` | installs `requirements.txt` + `requirements-llmops.txt` into `forge-ml`, plus `poetry`/`commitizen` via pipx |
 | 6 | `06-vscode.sh` | installs extensions, drops in `settings.json` |
 | 7 | `07-macos.sh` | applies macOS `defaults` tweaks + Touch ID for `sudo` |
-| 8 | `08-claude-code.sh` | installs Claude Code, applies settings, installs plugins, adds MCP servers |
+| 8 | `08-claude-code.sh` | Claude Code CLI, settings, global `CLAUDE.md` + skills/agents, plugins, MCP servers |
 
 ## Secrets (MCP tokens)
 
