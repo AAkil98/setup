@@ -9,8 +9,9 @@ languages, editor, tooling, Claude Code, the lot.
 | Area | What you get |
 |------|--------------|
 | **Homebrew** | git, gh, **uv**, pipx, pre-commit, dvc, kubectl, protobuf, yq, tmux, ripgrep… + VS Code, Docker, Chrome, **Ollama** (`Brewfile`) |
-| **Shell** | zsh + oh-my-zsh (Le Wagon plugins) with a **starship** prompt (Catppuccin Mocha) + JetBrainsMono Nerd Font, tmux config, and my dotfiles |
+| **Shell** | zsh + oh-my-zsh (Le Wagon plugins) with a **starship** prompt (Catppuccin Mocha) + JetBrainsMono Nerd Font, tmux, **Ghostty** terminal, and my dotfiles |
 | **Workflow** | SSH config (macOS keychain), global `.editorconfig`, gh aliases + **gh-dash** PR dashboard, Touch ID for `sudo` |
+| **Modern CLI** | zoxide (`z`), fzf, git-delta, eza, bat — Catppuccin-themed |
 | **Python (data)** | pyenv → Python 3.12.9 → a `forge-ml` virtualenv with the data-science stack (`requirements.txt`) |
 | **Python (LLMOps/MLOps)** | same env, plus langchain/langgraph, langfuse, mcp/fastmcp, qdrant, mlflow, prefect, optuna, evidently, opentelemetry… (`requirements-llmops.txt`) + `poetry`/`commitizen` via pipx |
 | **Node** | nvm → Node 24.11.1 (default) |
@@ -86,7 +87,7 @@ Everything is plain text — edit, commit, and your next machine inherits it:
 - **VS Code extensions** → `vscode/extensions.txt`
 - **Claude Code settings** → `claude/settings.json`
 - **Shell / git / SSH / editor config** → `dotfiles/`
-- **Prompt & tmux** → `dotfiles/starship.toml`, `dotfiles/.tmux.conf`
+- **Prompt / tmux / terminal** → `dotfiles/starship.toml`, `dotfiles/.tmux.conf`, `dotfiles/ghostty/config`
 - **gh-dash dashboard** → `dotfiles/gh-dash/config.yml`
 - **macOS tweaks** → `scripts/07-macos.sh`
 

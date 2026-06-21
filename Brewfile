@@ -18,6 +18,11 @@ brew "wget"               # downloader
 brew "jq"                 # command-line JSON processor
 brew "tree"               # pretty directory trees
 brew "starship"           # fast, customizable shell prompt
+brew "zoxide"             # smarter cd — `z <dir>` from anywhere
+brew "fzf"                # fuzzy finder (Ctrl-R history, Ctrl-T files)
+brew "git-delta"          # syntax-highlighted git diffs (git pager)
+brew "eza"                # modern, colorful ls
+brew "bat"                # modern cat with syntax highlighting
 
 # pyenv build dependencies (needed to compile Python cleanly)
 brew "openssl@3"
@@ -31,6 +36,7 @@ cask "visual-studio-code" # your editor
 cask "docker-desktop"     # Docker (Desktop app + `docker` CLI)
 cask "google-chrome"      # browser
 cask "font-jetbrains-mono-nerd-font"  # Nerd Font for starship/tmux glyphs
+cask "ghostty"            # fast native terminal (ships Catppuccin themes)
 
 # ---- LLMOps / MLOps / DevOps (for mlops-projects & mada) ---------------------
 brew "uv"                 # fast Python package/project manager (forge-ml uses it)

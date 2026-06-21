@@ -100,5 +100,32 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
+# ---- Modern CLI tools -------------------------------------------------------
+
+# zoxide — smarter cd (`z <dir>`; `zi` for interactive pick).
+type -a zoxide > /dev/null 2>&1 && eval "$(zoxide init zsh)"
+
+# fzf — fuzzy finder (Ctrl-R history, Ctrl-T files, Alt-C cd).
+if type -a fzf > /dev/null 2>&1; then
+  source <(fzf --zsh) 2>/dev/null
+  type -a rg > /dev/null 2>&1 && export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*"'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a --multi"
+fi
+
+# bat — better cat (Catppuccin theme installed by scripts/02-shell.sh).
+type -a bat > /dev/null 2>&1 && export BAT_THEME="Catppuccin Mocha"
+
+# eza — better ls (needs a Nerd Font for --icons).
+if type -a eza > /dev/null 2>&1; then
+  alias ls='eza --icons --group-directories-first'
+  alias ll='eza -l --icons --git --group-directories-first'
+  alias la='eza -la --icons --git --group-directories-first'
+fi
+
 # Starship prompt — must load after oh-my-zsh so it owns the prompt.
 type -a starship > /dev/null 2>&1 && eval "$(starship init zsh)"

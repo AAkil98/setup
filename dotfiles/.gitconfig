@@ -7,8 +7,23 @@
 
 [core]
 	editor = code --wait
-	pager = less -FRSX
+	pager = delta
 	excludesfile = ~/.gitignore_global
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+	syntax-theme = Catppuccin Mocha
+
+[merge]
+	conflictstyle = zdiff3
+
+[diff]
+	colorMoved = default
 
 [color]
 	ui = auto

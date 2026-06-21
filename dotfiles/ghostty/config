@@ -1,0 +1,11 @@
+# ~/.config/ghostty/config — managed by github.com/AAkil98/setup
+
+font-family = JetBrainsMono Nerd Font
+font-size = 13
+theme = catppuccin-mocha
+
+background-opacity = 0.98
+cursor-style = bar
+window-padding-x = 8
+window-padding-y = 8
+macos-option-as-alt = true

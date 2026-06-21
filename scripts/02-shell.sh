@@ -46,4 +46,24 @@ fi
 "$HOME/.tmux/plugins/tpm/bin/install_plugins" >/dev/null 2>&1 \
   || warn "tmux plugins will install on first launch (open tmux, press prefix + I)."
 
+# Ghostty terminal config.
+mkdir -p "$HOME/.config/ghostty"
+link_file "$REPO_ROOT/dotfiles/ghostty/config" "$HOME/.config/ghostty/config"
+
+# Catppuccin theme for bat (git-delta reuses bat's theme registry).
+if have bat; then
+  bat_themes="$(bat --config-dir)/themes"
+  if [ ! -e "$bat_themes/Catppuccin Mocha.tmTheme" ]; then
+    log "Installing Catppuccin theme for bat..."
+    mkdir -p "$bat_themes"
+    curl -fsSL -o "$bat_themes/Catppuccin Mocha.tmTheme" \
+      "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme" \
+      && bat cache --build >/dev/null 2>&1 \
+      && ok "bat Catppuccin theme installed" \
+      || warn "couldn't fetch bat theme (delta falls back to a default)"
+  else
+    ok "bat Catppuccin theme already installed"
+  fi
+fi
+
 ok "Shell ready. Open a new terminal (or run 'exec zsh') to load it."
