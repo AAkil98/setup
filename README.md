@@ -17,7 +17,7 @@ down to **just macOS** and automated end-to-end.
 | **Python (LLMOps/MLOps)** | same env, plus langchain/langgraph, langfuse, mcp/fastmcp, qdrant, mlflow, prefect, optuna, evidently, opentelemetry… (`requirements-llmops.txt`) + `poetry`/`commitizen` via pipx |
 | **Node** | nvm → Node 24.11.1 (default) |
 | **VS Code** | my extensions + a baseline `settings.json` |
-| **Claude Code** | the CLI, my `settings.json` (opus / low effort / `dark-daltonized`), the `rust-analyzer-lsp` + `vercel` plugins, and MCP servers |
+| **Claude Code** | the CLI, my `settings.json` (opus / low effort / `dark-daltonized`), 8 plugins (`rust-analyzer-lsp`, `pyright-lsp`, `mcp-server-dev`, `langfuse-observability`, `qdrant-skills`, `huggingface-skills`, `pydantic-ai`, `vercel`), and MCP servers |
 | **macOS** | sensible system tweaks (fast key repeat, show extensions, screenshots → ~/Screenshots…) |
 
 ## Quick start (on the new Mac)

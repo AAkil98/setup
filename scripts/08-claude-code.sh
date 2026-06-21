@@ -32,11 +32,21 @@ ok "Claude settings applied"
 log "Registering the official marketplace + your plugins..."
 claude plugin marketplace add anthropics/claude-plugins-official >/dev/null 2>&1 \
   || warn "marketplace add failed (run 'claude' once to log in, then re-run)."
-for p in rust-analyzer-lsp vercel; do
-  if claude plugin install "$p@claude-plugins-official" >/dev/null 2>&1; then
-    ok "installed plugin: $p"
+
+# Plugin list comes from claude/settings.json — single source of truth.
+if have jq; then
+  plugins=$(jq -r '.enabledPlugins | keys[]' "$REPO_ROOT/claude/settings.json")
+else
+  plugins="rust-analyzer-lsp@claude-plugins-official vercel@claude-plugins-official
+pyright-lsp@claude-plugins-official mcp-server-dev@claude-plugins-official
+langfuse-observability@claude-plugins-official qdrant-skills@claude-plugins-official
+huggingface-skills@claude-plugins-official pydantic-ai@claude-plugins-official"
+fi
+for p in $plugins; do
+  if claude plugin install "$p" >/dev/null 2>&1; then
+    ok "installed plugin: ${p%@*}"
   else
-    warn "could not install $p — try: claude plugin install $p@claude-plugins-official"
+    warn "could not install ${p%@*} — try: claude plugin install $p"
   fi
 done
 

@@ -4,6 +4,12 @@
   "theme": "dark-daltonized",
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "vercel@claude-plugins-official": true
+    "vercel@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "mcp-server-dev@claude-plugins-official": true,
+    "langfuse-observability@claude-plugins-official": true,
+    "qdrant-skills@claude-plugins-official": true,
+    "huggingface-skills@claude-plugins-official": true,
+    "pydantic-ai@claude-plugins-official": true
   }
 }
